@@ -63,4 +63,12 @@ app.get("/customers", (req, res) => {
   });
 });
 
+//DELETE ONE
+app.delete("/customers/:id", (req, res) => {
+  Customer.findByIdAndRemove(req.params.id, (err, customers) => {
+    if (err) return res.send(err);
+    res.send(customers);
+  });
+});
+
 app.listen(PORT, () => console.log(`App Running on port ${PORT}`));
